@@ -14,6 +14,9 @@ public record Register(
     string LastName,
     string Password) : IRequest<RegistrationResult>;
 
+public record RegistrationResult(string IdentityId, Guid AthleteId, string EmailAddress, string FirstName, 
+    string LastName, string Token);
+    
 public class RegisterHandler : IRequestHandler<Register, RegistrationResult>
 {
     private readonly IUnitOfWork _uow;
@@ -102,6 +105,3 @@ public class RegisterHandler : IRequestHandler<Register, RegistrationResult>
         };
     }
 }
-
-public record RegistrationResult(string IdentityId, Guid AthleteId, string EmailAddress, string FirstName, 
-    string LastName, string Token);
